@@ -8,7 +8,8 @@ function divElementEnostavniTekst(sporocilo) {
                 .replace(/&lt;img/g, '<img')
                 .replace(/png\' \/&gt;/g, 'png\' />')
                 .replace(/gif\' \/&gt;/g, 'gif\' />')
-                .replace(/jpg\' \/&gt;/g, 'jpg\' />');
+                .replace(/jpg\' \/&gt;/g, 'jpg\' />')
+                .replace(/&gt;/g, '>');
     
     console.log(sporocilo);
     
@@ -24,8 +25,8 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
-  sporocilo = dodajSmeske(sporocilo);
   sporocilo = dodajSlike(sporocilo);
+  sporocilo = dodajSmeske(sporocilo);
   
   var sistemskoSporocilo;
 
@@ -145,10 +146,10 @@ function dodajSmeske(vhodnoBesedilo) {
 }
 
 function dodajSlike(vhodnoBesedilo) {
-  var reg = new RegExp(/https?:\/\/.{1,}\.(jpg|png|gif)$/gi);
+  var reg = new RegExp(/https?:\/\/.*?\.(jpg|png|gif)/gi);
   
   vhodnoBesedilo = vhodnoBesedilo.replace(reg, function(str) {
-    return str + "<img src='"+ str + "' style='width:200px; margin-left:20px;' />";
+    return "<img src='"+ str + "' style='width:200px; margin-left:20px;' />";
   });
   
   return vhodnoBesedilo;
