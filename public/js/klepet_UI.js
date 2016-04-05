@@ -87,7 +87,7 @@ $(document).ready(function() {
         $('#seznam-kanalov').append(divElementEnostavniTekst(kanal));
       }
     }
-
+    
     $('#seznam-kanalov div').click(function() {
       klepetApp.procesirajUkaz('/pridruzitev ' + $(this).text());
       $('#poslji-sporocilo').focus();
@@ -99,8 +99,17 @@ $(document).ready(function() {
     for (var i=0; i < uporabniki.length; i++) {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
     }
+    
+  /*
+    Posiljanje hitrega zasebnega sporocila, I.naloga
+  */
+  
+  $('#seznam-uporabnikov div').click(function() {
+    var target = $(this).text();
+    $("#poslji-sporocilo").val('/zasebno "' + target + '" ').focus();
   });
-
+  
+  });
   setInterval(function() {
     socket.emit('kanali');
     socket.emit('uporabniki', {kanal: trenutniKanal});
@@ -112,7 +121,6 @@ $(document).ready(function() {
     procesirajVnosUporabnika(klepetApp, socket);
     return false;
   });
-  
   
 });
 
