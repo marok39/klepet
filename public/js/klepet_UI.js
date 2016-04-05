@@ -3,7 +3,12 @@ function divElementEnostavniTekst(sporocilo) {
   var jeSlika = (sporocilo.indexOf('.jpg') > -1) || (sporocilo.indexOf('.gif') > -1) || (sporocilo.indexOf('.png') > -1);
   
   if (jeSmesko || jeSlika) {
-    sporocilo = sporocilo.replace(/\</g, '&lt;').replace(/\>/g, '&gt;').replace('&lt;img', '<img').replace('png\' /&gt;', 'png\' />').replace('gif\' /&gt;', 'gif\' />').replace('jpg\' /&gt;', 'jpg\' />');
+    sporocilo = sporocilo.replace(/\</g, '&lt;')
+                .replace(/\>/g, '&gt;')
+                .replace(/&lt;img/g, '<img')
+                .replace(/png\' \/&gt;/g, 'png\' />')
+                .replace(/gif\' \/&gt;/g, 'gif\' />')
+                .replace(/jpg\' \/&gt;/g, 'jpg\' />');
     
     console.log(sporocilo);
     
