@@ -13,7 +13,7 @@ function divElementEnostavniTekst(sporocilo) {
                 .replace(/&lt;iframe/g, '<iframe')
                 .replace(/&lt;\/iframe&gt;/g, '</iframe>')
                 .replace(/&gt;/g, '>');
-
+                
     return $('<div style="font-weight: bold"></div>').html(sporocilo);
   } else {
     return $('<div style="font-weight: bold;"></div>').text(sporocilo);
@@ -26,9 +26,10 @@ function divElementHtmlTekst(sporocilo) {
 
 function procesirajVnosUporabnika(klepetApp, socket) {
   var sporocilo = $('#poslji-sporocilo').val();
+  
   sporocilo = dodajSlike(sporocilo);
-  sporocilo = dodajSmeske(sporocilo);
   sporocilo = dodajYoutube(sporocilo);
+  sporocilo = dodajSmeske(sporocilo);
   
   console.log(sporocilo);
   
@@ -127,6 +128,19 @@ $(document).ready(function() {
   });
   
   });
+  
+  socket.on('dregljaj', function(rezultat) {
+    if (rezultat.dregljaj) {
+      $("#vsebina").jrumble();
+      
+      $("#vsebina").trigger('startRumble');
+      
+      setTimeout(function() {
+        $("#vsebina").trigger('stopRumble');
+      }, 1500);
+    }
+  });
+  
   setInterval(function() {
     socket.emit('kanali');
     socket.emit('uporabniki', {kanal: trenutniKanal});
@@ -138,7 +152,6 @@ $(document).ready(function() {
     procesirajVnosUporabnika(klepetApp, socket);
     return false;
   });
-  
 });
 
 function dodajSmeske(vhodnoBesedilo) {
@@ -148,7 +161,8 @@ function dodajSmeske(vhodnoBesedilo) {
     "(y)": "like.png",
     ":*": "kiss.png",
     ":(": "sad.png"
-  }
+  };
+  
   for (var smesko in preslikovalnaTabela) {
     vhodnoBesedilo = vhodnoBesedilo.replace(smesko,
       "<img src='http://sandbox.lavbic.net/teaching/OIS/gradivo/" +
@@ -178,5 +192,5 @@ function dodajYoutube(vhodnoBesedilo) {
         
     console.log(vhodnoBesedilo);
   }
-  return vhodnoBesedilo
+  return vhodnoBesedilo;
 }
