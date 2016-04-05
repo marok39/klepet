@@ -103,14 +103,16 @@ $(document).ready(function() {
     }
   });
   
-  socket.on('dregljaj', function() {
-    $("#vsebina").jrumble();
-    
-    $("#vsebina").trigger('startRumble');
-    
-    setTimeout(function() {
-      $("#vsebina").trigger('stopRumble');
-    }, 1500);
+  socket.on('dregljaj', function(rezultat) {
+    if (rezultat.dregljaj) {
+      $("#vsebina").jrumble();
+      
+      $("#vsebina").trigger('startRumble');
+      
+      setTimeout(function() {
+        $("#vsebina").trigger('stopRumble');
+      }, 1500);
+    }
   });
   
   setInterval(function() {
