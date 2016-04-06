@@ -177,7 +177,7 @@ function dodajSlike(vhodnoBesedilo) {
   
   if(id != null) {
     id = id[0];
-    vhodnoBesedilo = vhodnoBesedilo.replace(reg, "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
+    vhodnoBesedilo = id + vhodnoBesedilo.replace(reg, "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
   }
 
   return vhodnoBesedilo;
@@ -188,8 +188,9 @@ function dodajYoutube(vhodnoBesedilo) {
   var id = vhodnoBesedilo.match(reg);
   console.log(id);
   if(id != null) {
+    var url = id;
     id = id[0].substring(id[0].indexOf('=') + 1);
-    vhodnoBesedilo = vhodnoBesedilo.replace(reg, "<iframe src='https://www.youtube.com/embed/" + id 
+    vhodnoBesedilo = url + vhodnoBesedilo.replace(reg, "<iframe src='https://www.youtube.com/embed/" + id 
         + "' allowfullscreen style='width:200px; height:150px; margin-left:20px;'></iframe>");
         
     console.log(vhodnoBesedilo);
