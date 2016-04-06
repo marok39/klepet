@@ -179,12 +179,7 @@ function dodajSlike(vhodnoBesedilo) {
     id = id[0];
     vhodnoBesedilo = vhodnoBesedilo.replace(reg, "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
   }
-  
-  /*
-  vhodnoBesedilo = vhodnoBesedilo.replace(reg, function(str) {
-    return "<img src='"+ str + "' style='width:200px; margin-left:20px;' />";
-  });
-  */
+
   return vhodnoBesedilo;
 }
 
