@@ -151,10 +151,11 @@ function dodajSmeske(vhodnoBesedilo) {
 function dodajYoutube(vhodnoBesedilo) {
   var reg = new RegExp(/https:\/\/www\.youtube\.com\/watch\?v=.{11}/gi);
   var id = vhodnoBesedilo.match(reg);
+  var url = id;
   console.log(id);
   if(id != null) {
     id = id[0].substring(id[0].indexOf('=') + 1);
-    vhodnoBesedilo = vhodnoBesedilo.replace(reg, "<iframe src='https://www.youtube.com/embed/" + id 
+    vhodnoBesedilo = vhodnoBesedilo.replace(reg, url + "<iframe src='https://www.youtube.com/embed/" + id 
         + "' allowfullscreen style='width:200px; height:150px; margin-left:20px;'></iframe>");
         
     console.log(vhodnoBesedilo);
