@@ -147,10 +147,12 @@ function dodajSmeske(vhodnoBesedilo) {
 
 function dodajSlike(vhodnoBesedilo) {
   var reg = new RegExp(/https?:\/\/.*?\.(jpg|png|gif)/gi);
+  var id = vhodnoBesedilo.match(reg);
   
-  vhodnoBesedilo = vhodnoBesedilo.replace(reg, function(str) {
-    return "<img src='"+ str + "' style='width:200px; margin-left:20px;' />";
-  });
-  
+  if(id != null) {
+    id = id[0];
+    vhodnoBesedilo = vhodnoBesedilo.replace(reg, id + "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
+  }
+
   return vhodnoBesedilo;
 }
