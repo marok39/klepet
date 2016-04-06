@@ -191,7 +191,7 @@ function dodajYoutube(vhodnoBesedilo) {
   if(id != null) {
     var url = id;
     id = id[0].substring(id[0].indexOf('=') + 1);
-    vhodnoBesedilo = url + vhodnoBesedilo.replace(reg, "<iframe src='https://www.youtube.com/embed/" + id 
+    vhodnoBesedilo = vhodnoBesedilo.replace(reg, url + "<iframe src='https://www.youtube.com/embed/" + id 
         + "' allowfullscreen style='width:200px; height:150px; margin-left:20px;'></iframe>");
         
     console.log(vhodnoBesedilo);
