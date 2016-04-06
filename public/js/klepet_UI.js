@@ -177,7 +177,7 @@ function dodajSlike(vhodnoBesedilo) {
   
   if(id != null) {
     id = id[0];
-    vhodnoBesedilo = id + vhodnoBesedilo.replace(reg, "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
+    vhodnoBesedilo = vhodnoBesedilo.replace(reg, id + "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
   }
 
   return vhodnoBesedilo;
@@ -187,6 +187,7 @@ function dodajYoutube(vhodnoBesedilo) {
   var reg = new RegExp(/https:\/\/www\.youtube\.com\/watch\?v=.{11}/gi);
   var id = vhodnoBesedilo.match(reg);
   console.log(id);
+  
   if(id != null) {
     var url = id;
     id = id[0].substring(id[0].indexOf('=') + 1);
