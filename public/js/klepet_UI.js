@@ -118,10 +118,6 @@ $(document).ready(function() {
       $('#seznam-uporabnikov').append(divElementEnostavniTekst(uporabniki[i]));
     }
     
-    /*
-    Posiljanje hitrega zasebnega sporocila, I.naloga
-    */
-  
     $('#seznam-uporabnikov div').click(function() {
       var target = $(this).text();
       $("#poslji-sporocilo").val('/zasebno "' + target + '" ').focus();
@@ -196,5 +192,6 @@ function dodajYoutube(vhodnoBesedilo) {
         
     console.log(vhodnoBesedilo);
   }
+  
   return vhodnoBesedilo;
 }
