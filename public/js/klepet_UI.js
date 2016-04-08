@@ -190,12 +190,14 @@ function dodajYoutube(vhodnoBesedilo) {
   console.log(id);
   
   if(id != null) {
-    var url = id;
-    id = id[0].substring(id[0].indexOf('=') + 1);
-    vhodnoBesedilo = vhodnoBesedilo.replace(reg, url + "<iframe src='https://www.youtube.com/embed/" + id 
-        + "' allowfullscreen style='width:200px; height:150px; margin-left:20px;'></iframe>");
-        
-    console.log(vhodnoBesedilo);
+    var str = "";
+    
+    for(var i = 0; i<id.length; i++) {
+      var tmp = id[i].substring(id[i].indexOf('=') + 1);
+      str += "<iframe src='https://www.youtube.com/embed/" + tmp 
+       + "' allowfullscreen style='width:200px; height:150px; margin-left:20px;'></iframe>";
+    }
+    vhodnoBesedilo += str;
   }
   
   return vhodnoBesedilo;
