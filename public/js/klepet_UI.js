@@ -172,7 +172,7 @@ function dodajSlike(vhodnoBesedilo) {
   var id = vhodnoBesedilo.match(reg);
   
   if(id != null) {
-    str = "";
+    var str = "";
     
     for(var i = 0; i<id.length; i++) {
       str += "<img src='"+ id[i] + "' style='width:200px; margin-left:20px;' />";
