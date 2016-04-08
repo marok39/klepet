@@ -150,8 +150,13 @@ function dodajSlike(vhodnoBesedilo) {
   var id = vhodnoBesedilo.match(reg);
   
   if(id != null) {
-    id = id[0];
-    vhodnoBesedilo = vhodnoBesedilo.replace(reg, id + "<img src='"+ id + "' style='width:200px; margin-left:20px;' />");
+    str = "";
+    
+    for(var i = 0; i<id.length; i++) {
+      str += "<img src='"+ id[i] + "' style='width:200px; margin-left:20px;' />";
+    }
+    
+    vhodnoBesedilo += str;
   }
 
   return vhodnoBesedilo;
